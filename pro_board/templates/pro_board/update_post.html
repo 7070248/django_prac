@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>게시물 수정</h1>
+<form action="{% url 'update_post' post.id %}" method="post">
+    {% csrf_token %}
+    <p>
+        제목 : <input type="text" name="title" value="{{ post.title }}"/>
+    </p>
+
+    <p>
+        내용 : <input type="text" name="content" value="{{ post.content }}"/>
+    </p>
+
+    <button type="submit">제출</button>
+</form>
+<a href="{% url 'post_list' %}">
+    <p>목록으로</p>
+</a>
+</body>
+</html>

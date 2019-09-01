@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>게시물 목록</h1>
+{% for post in posts %}
+    <a href="{% url 'post_detail' post.id %}">
+        <div>
+            <p> {{ forloop.counter }} . 제목 : {{ post.title }} 날짜 : {{ post.pub_date }} </p>
+        </div>
+    </a>
+
+{% endfor %}
+
+<a href="{% url "create_post" %}">
+    작성하기
+</a>
+</body>
+</html>

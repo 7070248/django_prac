@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form>
+    <h1>게시물 내용</h1>
+    {{ post.title }}
+    {{ post.content }}
+    {{ post.pub_date }}
+
+    <a href="{% url 'post_list' %}">
+        <p>목록으로</p>
+    </a>
+
+    <a href="{% url 'update_post' post.id %}">
+        <p>수정하기</p>
+    </a>
+
+    <a href="{% url 'delete_post' post.id %}">
+        <p>삭제하기</p>
+    </a>
+</form>
+
+댓글
+<form action="{% url 'create_comment' post.id %}" method="post">
+    {% csrf_token %}
+    <p>
+        작성자 : <input type="text" name="writer" value="익명"/>
+    </p>
+
+    <p>
+        내용 : <input type="text" name="content"/>
+
+    </p>
+    <button type="submit">제출</button>
+</form>
+
+{% for comment in comments %}
+    <div>
+    {{ comment.writer }}
+    {{ comment.content }}
+    </div>
+{% endfor %}
+
+</body>
+</html>

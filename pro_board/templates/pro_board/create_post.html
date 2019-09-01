@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>게시물 작성</h1>
+<form action="{% url 'create_post' %}" method="post">
+    {% csrf_token %}
+    <p>
+        제목 : <input type="text" name="title"/>
+    </p>
+
+    <p>
+        내용 : <input type="text" name="content"/>
+    </p>
+
+    <button type="submit">제출</button>
+</form>
+<a href="{% url 'post_list' %}">
+    <p>목록으로</p>
+</a>
+</body>
+</html>
