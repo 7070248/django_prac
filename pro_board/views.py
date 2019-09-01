@@ -67,3 +67,5 @@ def create_comment(request, post_id):
     writer = data.get('writer')
     Comment.objects.create(post=post, content=content, writer=writer)
     return redirect('post_detail', post_id)
+
+
